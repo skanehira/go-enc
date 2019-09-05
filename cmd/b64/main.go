@@ -18,7 +18,10 @@ func init() {
 }
 
 func run() (int, error) {
-	if *encodeString != "" {
+	if flag.NFlag() == 0 {
+		flag.Usage()
+		return 0, nil
+	} else if *encodeString != "" {
 		fmt.Println(b64.Encode([]byte(*encodeString)))
 	} else if *decodeString != "" {
 		if result, err := b64.Decode(*decodeString); err != nil {
