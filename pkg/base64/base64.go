@@ -2,12 +2,11 @@ package base64
 
 import (
 	"encoding/base64"
-	"errors"
 	"io/ioutil"
 	"os"
-)
 
-var NoStringError = errors.New("there are no specified strings")
+	"github.com/skanehira/go-enc/pkg/errors"
+)
 
 type Base64 struct {
 }
@@ -26,7 +25,7 @@ func (b *Base64) Encode(bytes []byte) string {
 
 func (b *Base64) Decode(str string) (string, error) {
 	if str == "" {
-		return "", NoStringError
+		return "", errors.NoStringError
 	}
 
 	result, err := base64.StdEncoding.DecodeString(str)
@@ -38,7 +37,7 @@ func (b *Base64) Decode(str string) (string, error) {
 
 func (b *Base64) EncodeFile(fileName string) (string, error) {
 	if fileName == "" {
-		return "", NoStringError
+		return "", errors.NoStringError
 	}
 
 	file, err := os.Open(fileName)

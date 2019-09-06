@@ -8,6 +8,11 @@ encode/decode cli tool written in Go.
 $ go get github.com/skanehira/go-enc/cmd/b64
 ```
 
+- url
+```sh
+$ go get github.com/skanehira/go-enc/cmd/urlenc
+```
+
 # Usage
 - base64
 ```sh
@@ -19,5 +24,14 @@ Usage of b64:
         encode to base64
   -f string
         encode file to base64
+```
 
+- urlenc
+```sh
+$ urlenc -h
+Usage of urlenc:
+  -d string
+        decode URL
+  -e string
+        encode URL
 ```
