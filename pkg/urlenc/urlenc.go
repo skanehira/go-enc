@@ -39,16 +39,5 @@ func (u *URLEnc) Decode(rawURL string) (string, error) {
 		return "", errors.NoStringError
 	}
 
-	baseURL, err := url.Parse(rawURL)
-	if err != nil {
-		return "", err
-	}
-
-	if query, err := url.QueryUnescape(baseURL.RawQuery); err != nil {
-		return "", err
-	} else {
-		baseURL.RawQuery = query
-	}
-
-	return baseURL.String(), nil
+	return url.QueryUnescape(rawURL)
 }
