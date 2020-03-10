@@ -6,14 +6,7 @@ import (
 	"github.com/skanehira/go-enc/pkg/errors"
 )
 
-type URLEnc struct {
-}
-
-func New() *URLEnc {
-	return &URLEnc{}
-}
-
-func (u *URLEnc) Encode(rawURL string) (string, error) {
+func Encode(rawURL string) (string, error) {
 	if rawURL == "" {
 		return "", errors.NoStringError
 	}
@@ -34,7 +27,7 @@ func (u *URLEnc) Encode(rawURL string) (string, error) {
 	return baseURL.String(), nil
 }
 
-func (u *URLEnc) Decode(rawURL string) (string, error) {
+func Decode(rawURL string) (string, error) {
 	if rawURL == "" {
 		return "", errors.NoStringError
 	}
