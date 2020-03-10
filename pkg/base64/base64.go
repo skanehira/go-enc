@@ -2,20 +2,11 @@ package base64
 
 import (
 	"encoding/base64"
-	"io/ioutil"
-	"os"
 
 	"github.com/skanehira/go-enc/pkg/errors"
 )
 
-type Base64 struct {
-}
-
-func New() *Base64 {
-	return &Base64{}
-}
-
-func (b *Base64) Encode(bytes []byte) string {
+func Encode(bytes []byte) string {
 	if len(bytes) == 0 {
 		return ""
 	}
@@ -23,7 +14,7 @@ func (b *Base64) Encode(bytes []byte) string {
 	return base64.StdEncoding.EncodeToString(bytes)
 }
 
-func (b *Base64) Decode(str string) (string, error) {
+func Decode(str string) (string, error) {
 	if str == "" {
 		return "", errors.NoStringError
 	}

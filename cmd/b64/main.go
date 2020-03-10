@@ -10,7 +10,6 @@ import (
 
 var encodeString = flag.String("e", "", "encode to base64")
 var decodeString = flag.String("d", "", "decode to string")
-var b64 = base64.New()
 
 func init() {
 	flag.Parse()
@@ -21,9 +20,9 @@ func run() (int, error) {
 		flag.Usage()
 		return 0, nil
 	} else if *encodeString != "" {
-		fmt.Println(b64.Encode([]byte(*encodeString)))
+		fmt.Println(base64.Encode([]byte(*encodeString)))
 	} else if *decodeString != "" {
-		if result, err := b64.Decode(*decodeString); err != nil {
+		if result, err := base64.Decode(*decodeString); err != nil {
 			return 1, err
 		} else {
 			fmt.Println(result)
