@@ -34,22 +34,3 @@ func (b *Base64) Decode(str string) (string, error) {
 	}
 	return string(result), err
 }
-
-func (b *Base64) EncodeFile(fileName string) (string, error) {
-	if fileName == "" {
-		return "", errors.NoStringError
-	}
-
-	file, err := os.Open(fileName)
-	if err != nil {
-		return "", err
-	}
-	defer file.Close()
-
-	data, err := ioutil.ReadAll(file)
-	if err != nil {
-		return "", err
-	}
-
-	return b.Encode(data), nil
-}

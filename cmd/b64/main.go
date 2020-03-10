@@ -10,7 +10,6 @@ import (
 
 var encodeString = flag.String("e", "", "encode to base64")
 var decodeString = flag.String("d", "", "decode to string")
-var encodeFile = flag.String("f", "", "encode file to base64")
 var b64 = base64.New()
 
 func init() {
@@ -29,14 +28,7 @@ func run() (int, error) {
 		} else {
 			fmt.Println(result)
 		}
-	} else if *encodeFile != "" {
-		if result, err := b64.EncodeFile(*encodeFile); err != nil {
-			return 1, err
-		} else {
-			fmt.Println(result)
-		}
 	}
-
 	return 0, nil
 }
 
